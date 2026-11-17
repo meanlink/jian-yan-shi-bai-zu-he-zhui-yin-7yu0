@@ -1,4 +1,4 @@
-from sqlalchemy import String, JSON, Double, ForeignKey, Boolean
+from sqlalchemy import String, JSON, Double, ForeignKey, Boolean, Integer
 from sqlalchemy.orm import Mapped, mapped_column
 from src.config.database import Base
 class Job(Base):
@@ -14,3 +14,4 @@ class Job(Base):
     created_by: Mapped[int] = mapped_column(ForeignKey('users.id'))
     created_at: Mapped[float] = mapped_column(Double)
     finished_at: Mapped[float | None] = mapped_column(Double, nullable=True)
+    claimed_epoch: Mapped[int | None] = mapped_column(Integer, nullable=True)
